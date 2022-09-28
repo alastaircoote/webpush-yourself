@@ -56,7 +56,7 @@ sendButton.addEventListener("click", async function () {
     const reg = await navigator.serviceWorker.register("./worker.js");
     console.log(reg);
     const stringifiedKey = (await applicationServerKeys.toJSON()).publicKey;
-
+    await navigator.serviceWorker.ready;
     reportProgress("Getting push subscription...");
     const subscription = await reg.pushManager.subscribe({
       applicationServerKey: stringifiedKey,
